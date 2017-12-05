@@ -1,26 +1,32 @@
 package polytech.fish.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
 public class Fish {
-	
-	@Id@GeneratedValue
-	private int id;
+
+	// @Id
+	// @GeneratedValue
+	// private int id;
+	@Id
 	private String species;
 	private float waterVolume;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Typology typology;
-	
 
-	public int getId() {
-		return id;
-	}
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "fish")
+	private List<Groupe> group;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+	// public int getId() {
+	// return id;
+	// }
+	//
+	// public void setId(int id) {
+	// this.id = id;
+	// }
 
 	public String getSpecies() {
 		return species;
@@ -45,6 +51,13 @@ public class Fish {
 	public void setTypology(Typology typology) {
 		this.typology = typology;
 	}
-	
-	
+
+	public List<Groupe> getGroup() {
+		return group;
+	}
+
+	public void setGroup(List<Groupe> group) {
+		this.group = group;
+	}
+
 }

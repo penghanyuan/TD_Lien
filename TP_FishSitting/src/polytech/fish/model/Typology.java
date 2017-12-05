@@ -9,14 +9,13 @@ public class Typology {
 
 	@Id
 	private String name;
-	private int fishAmount;
 	private String description;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "typology")
 	private List<Fish> fish;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Groupe group;
+//	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private Groupe group;
 
 	public String getName() {
 		return name;
@@ -24,14 +23,6 @@ public class Typology {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getFishAmount() {
-		return fishAmount;
-	}
-
-	public void setFishAmount(int fishAmount) {
-		this.fishAmount = fishAmount;
 	}
 
 	public String getDescription() {
@@ -53,15 +44,7 @@ public class Typology {
 			f.setTypology(this);
 		}
 		
-		this.fishAmount = fish.size();
 	}
 
-	public Groupe getGroup() {
-		return group;
-	}
-
-	public void setGroup(Groupe group) {
-		this.group = group;
-	}
 
 }
